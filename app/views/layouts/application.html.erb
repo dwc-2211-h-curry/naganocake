@@ -11,7 +11,15 @@
   </head>
 
   <body>
-    <%= render 'layouts/public_header' %>
+    
+    <% if customer_signed_in? %>
+      <%= render 'layouts/public_header' %>
+    <% elsif admin_signed_in? %>
+      <%= render 'layouts/admin_header' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
