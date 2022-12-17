@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
   
   devise_for :admins, skip: [:registrations,:passwords], controllers:{
-    sessions: "admins/sessions"
+    sessions: "admin/sessions"
   }
   
   scope module: :public do
