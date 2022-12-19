@@ -1,5 +1,9 @@
 <h2>Sign up</h2>
 
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
