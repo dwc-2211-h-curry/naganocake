@@ -14,7 +14,7 @@
   <%= form_with model: @item, url: admin_items_path do |f| %>
     <div class="form-group row">
       <div class="col-md-3"></div>
-      <div class="col-md-1 text-left"><%= f.label :image, '商品名' %></div>
+      <div class="col-md-1 text-left"><%= f.label :image, '商品画像' %></div>
       <div class="col-md-8"><%= f.file_field :image, accept: "image/*", required: true %></div>
     </div>
 
@@ -33,7 +33,7 @@
     <div class="form-group row">
       <div class="col-md-3"></div>
       <div class="col-md-1 text-left"><%= f.label :genre_id, 'ジャンル' %></div>
-      <div class="col-md-8"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id),prompt: "-- 選択してください --", required: true, class: "w-50" %></div>
+      <div class="col-md-8"><%= f.collection_select :genre_id, @genres, :id, :genre_name, prompt: "-- 選択してください --", required: true, class: "w-50" %></div>
     </div>
     <!--:name-->
 

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="m-md-2"><br></div>
   <div class="row">
-    <h4 class="col-md-2 mx-auto text-center">
+    <h4 class="col-md-2 mx-auto text-center" style="background-color:#DDD">
       <strong>商品一覧</strong>
     </h4>
     <div class="col-md-5 mx-auto text-right">
@@ -10,6 +10,7 @@
   </div>
 
   <diV class="m-md-2"><br></diV>
+  
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-1 mx-auto text-left">
@@ -42,7 +43,7 @@
     <div class="col-md-1 mx-auto text-left"><%= item.price.to_s(:delimited) %>
       <div class="col-md-1"><br></div>
     </div>
-    <div class="col-md-2 mx-auto text-left"><%= item.genre.name %>
+    <div class="col-md-2 mx-auto text-left"><%= item.genre.genre_name %>
       <div class="col-md-1"><br></div>
     </div>
     <% if item.is_active == true %>
