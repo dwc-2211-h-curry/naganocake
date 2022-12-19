@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>会員情報編集だわね～</h2>
+    <h2>会員情報編集</h2>
     <%= form_for(@customer, url: {controller: 'customers', action: 'update'}) do |f| %>
       <div class="form-group">
         <%= f.label :氏 %>
@@ -39,5 +39,10 @@
         <%= f.submit class: 'btn btn-secondary' %>
       </div>
     <% end %>
+    <div>
+      <%= link_to confirm_customers_path, class: "btn btn-lg btn-secondary" do %>
+        <i class="fas fa-user-cog">退会する</i>
+      <% end %>
+    </div>
   </div>
 </div>
