@@ -1,0 +1,88 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-md-12"></div>
+    <h4 class="col-md-2 mx-auto text-center">
+      <strong><%= @customer.last_name + @customer.first_name %>さんの会員詳細</strong>
+    </h4>
+
+    <div class="col-md-6"></div>
+  </div>
+
+  <div class="m-md-8"><br></div>
+
+    <div class="row">
+      <table class="information">
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+
+        <td class="m-md-1"><br></td>
+
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name + @customer.first_name %></td>
+        </tr>
+
+        <td class="m-md-1"><br></td>
+
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
+        </tr>
+
+        <td class="m-md-1"><br></td>
+
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postcode %></td>
+        </tr>
+
+        <td class="m-md-1"><br></td>
+        
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+
+        <td class="m-md-1"><br></td>
+        
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+
+        <td class="m-md-1"><br></td>
+        
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+
+        <td class="m-md-1"><br></td>
+
+        <tr>
+          <th>会員ステータス</th>
+          <td>&nbsp;&nbsp;&nbsp;</td>
+          <% if @customer.is_deleted == false %>
+            <td class="text-success">
+              <strong><%= '有効' %></strong>
+            </td>
+          <% else %>
+            <td class="text-secondary">
+              <strong><%= '退会' %></strong>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="m-md-1"><br></div>
+
+  <div class="row">
+    <div class="action center-block mx-auto">
+      <%= link_to '編集する',edit_admin_customer_path(@customer), class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>
