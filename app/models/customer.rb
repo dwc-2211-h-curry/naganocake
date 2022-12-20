@@ -9,8 +9,6 @@ class Customer < ApplicationRecord
     format: { with: /\A([ｧ-ﾝﾞﾟァ-ヶー－]+）?)+\z/ }
   validates :postcode,
     numericality: {only_integer: true}, length: { is: 7 }
-  validates :address,
-    numericality: {only_integer: true}
   validates :phone_number,
     numericality: {only_integer: true}
 end
