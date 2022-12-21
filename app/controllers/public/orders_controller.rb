@@ -50,6 +50,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order_details = OrderDetail.where(order_id: params[:id])
+    @order = Order.find(params[:id])
   end
 
   private
