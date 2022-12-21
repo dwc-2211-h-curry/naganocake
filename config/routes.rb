@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
     resources :cart_items, except: [:new,:show,:edit] do
       collection do
+        patch :update
         delete :all_destroy
       end
     end
