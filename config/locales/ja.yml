@@ -1,4 +1,9 @@
 ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+
+ja:
   enums:
     order:
       payment_way:
