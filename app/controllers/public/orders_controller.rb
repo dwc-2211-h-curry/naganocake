@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  begfore_action :cart_item_nill, only: [:new, :create]
+  before_action :cart_item_nill, only: [:new, :create]
 
   def new
     @order = Order.new
