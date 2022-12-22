@@ -1,1 +1,65 @@
-<h1>カート内一覧だよね~</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2>ショッピングカート</h2>
+    </div>
+    <div class="col-6">
+      <div class="text-right">
+        <%= link_to 'カートを空にする', all_destroy_cart_items_path, method: :delete, class: "btn btn-sm btn-danger"%>
+      </div>
+    </div>
+    <table border="2" class='col-md-12'>
+      <thead>
+        <tr style="height: 50px;">
+          <th bgcolor="#F2F2F2">商品名</th>
+          <th bgcolor="#F2F2F2">単価(税込)</th>
+          <th bgcolor="#F2F2F2">数量</th>
+          <th bgcolor="#F2F2F2">小計</th>
+          <th bgcolor="#F2F2F2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= image_tag cart_item.item.image, size: "50x50" %><h5 style="display:inline;"><%= cart_item.item.name %></h5></td>
+          <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+          <td>
+            <%= form_with(model: cart_item, url: cart_item_path(cart_item.id), local: true) do |f| %>
+              <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+              <%= f.select :quantity, *[1..10] %>
+              <%= f.submit '変更', class: "btn btn-success" %>
+            <% end %>
+          </td>
+          <!--<td>%= item.add_tax_price*cart_item.item.quantity.to_s(:delimited) %></td>-->
+          <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger"%></td>
+          <td><%= cart_item.subtotal.to_s(:delimited) + "円" %></td>
+          <%# @total = @total + subtotal %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-9 mt-3">
+      <%= link_to '買い物を続ける',root_path, class: "btn btn-sm btn-primary"%>
+    </div>
+    <div class='col-3 mt-3'>
+      <table border="2">
+        <tbody>
+          <tr>
+            <td bgcolor="#F2F2F2" style="width: 30%; height: 50px;">合計金額</td>
+            <td style="width: 30%;"><%= @total.to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class='col-3'></div>
+    <div class='col-6'>
+      <% unless @items.count == 0 %>
+        <p class="text-center"><%= link_to '情報入力に進む',new_order_path(total_payment: @total), class: "btn btn-sm btn-success"%></p>
+      <% end %>
+    </div>
+  </div>
+</div>

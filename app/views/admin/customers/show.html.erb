@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="m-md-2"><br></div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <h4 class="col-md-11 mx-auto text-left">
+      <strong><%= @customer.last_name + @customer.first_name %>さんの会員詳細</strong>
+    </h4>
+    <div class="col-md-8"></div>
+  </div>
+
+  <div class="m-md-8"><br></div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">会員ID</div>
+      <div class="col-md-4"><%= @customer.id %></div>
+      <div class="col-md-5"></div>
+
+      <br><br>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">氏名</div>
+      <div class="col-md-4"><%= @customer.last_name + @customer.first_name %></div>
+      <div class="col-md-5"></div>
+
+      <br><br>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">フリガナ</div>
+      <div class="col-md-4"><%= @customer.last_name_kana + @customer.first_name_kana %></div>
+      <div class="col-md-5"></div>
+
+      <br><br>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">郵便番号</div>
+      <div class="col-md-4"><%= @customer.postcode %></div>
+      <div class="col-md-5"></div>
+
+      <br><br>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">住所</div>
+      <div class="col-md-4"><%= @customer.address %></div>
+      <div class="col-md-5"></div>
+
+      <br><br>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">電話番号</div>
+      <div class="col-md-4"><%= @customer.phone_number %></div>
+      <div class="col-md-5"></div>
+
+      <br><br>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">メールアドレス</div>
+      <div class="col-md-4"><%= @customer.email %></div>
+      <div class="col-md-5"></div>
+
+      <br><br>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-2 mx-auto text-left">会員ステータス</div>
+      <div class="col-md-4 mx-auto text-left">
+        <% if @customer.is_deleted == false %>
+          <div class="text-success" >
+            <%= '有効' %>
+          </div>
+        <% else %>
+          <div class="text-secondary" >
+            <%= '退会' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-5"></div>
+    </div>
+
+  <div class="col-md-1"><br></div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-2">
+      <%= link_to '編集する',edit_admin_customer_path(@customer), class: 'btn btn-success' %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to '注文履歴一覧を見る',admin_root_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
