@@ -19,20 +19,20 @@
         </tr>
       </thead>
       <tbody>
-        <% @items.each do |item| %>
+        <% @cart_items.each do |cart_item| %>
         <tr>
-          <td><%= image_tag item.image, size: "50x50" %><h5 style="display:inline;"><%= item.name %></h5></td>
-          <td><%= item.add_tax_price.to_s(:delimited) %></td>
+          <td><%= image_tag cart_item.item.image, size: "50x50" %><h5 style="display:inline;"><%= cart_item.item.name %></h5></td>
+          <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
           <td>
-            <%= form_with model: item, url: item_path(item.id) do |f| %>
-              <%= f.hidden_field :cart_item, :value => item_id %>
+            <%= form_with(model: cart_item, url: cart_item_path(cart_item.id), local: true) do |f| %>
+              <%= f.hidden_field :item_id, :value => cart_item.item.id %>
               <%= f.select :quantity, *[1..10] %>
               <%= f.submit '変更', class: "btn btn-success" %>
             <% end %>
           </td>
-          <td><%= item.add_tax_price*item.cart_items.quantity.to_s(:delimited) %></td>
-          <td><%= link_to '削除する', cart_item_path(item.id), method: :delete, class: "btn btn-sm btn-danger"%></td>
-          <td><%= item.add_tax_price.to_s(:delimited) + "円" %></td>
+          <!--<td>%= item.add_tax_price*cart_item.item.quantity.to_s(:delimited) %></td>-->
+          <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger"%></td>
+          <td><%= cart_item.subtotal.to_s(:delimited) + "円" %></td>
           <%# @total = @total + subtotal %>
         </tr>
         <% end %>
