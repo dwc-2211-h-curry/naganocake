@@ -25,8 +25,9 @@
           <td><%= item.add_tax_price.to_s(:delimited) %></td>
           <td>
             <%= form_with model: item, url: item_path(item.id) do |f| %>
-             <%= f.select :quantity, *[1..10] %>
-             <%= f.submit '変更', class: "btn btn-success" %>
+              <%= f.hidden_field :cart_item, :value => item_id %>
+              <%= f.select :quantity, *[1..10] %>
+              <%= f.submit '変更', class: "btn btn-success" %>
             <% end %>
           </td>
           <td><%= item.add_tax_price*item.cart_items.quantity.to_s(:delimited) %></td>
