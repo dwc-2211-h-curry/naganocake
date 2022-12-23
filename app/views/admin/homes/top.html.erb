@@ -14,12 +14,12 @@
       <tr>
         <td>
           <%= link_to admin_order_path(order.id) do %>
-            <%= l order.created_at_i18n %>
+            <%= l order.created_at %>
           <% end %>
         </td>
-        <td><%= order.customer.last_name+first_name %></td>
-        <td><%= order.order_detail.quantity %></td>
-        <td><%= order.product_status_i18n %></td>
+        <td><%= order.customer.last_name+order.customer.first_name %></td>
+        <td><%= order.order_details.sum(:quantity) %></td>
+        <td><%= order.order_status_i18n %></td>
       </tr>
     </tbody>
   <% end %>
