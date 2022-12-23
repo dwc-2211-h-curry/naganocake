@@ -1,0 +1,61 @@
+<h4>注文履歴詳細</h4>
+
+<%= form_wiht model: [:admin, @order] do |f| %>
+  <table class="table table-borderless">
+    <tr>
+      <th>購入者</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>注文日</th>
+      <td><%= l @order.created_at_i18n %></td>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <td>
+        <%= @order.shipping_postal_code %>
+        <%= @order.shipping_address %>
+        <%= @order.shipping_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order.payment_way %></td>
+    </tr>
+    <tr>
+      <th>注文ステータス</th>
+      <td>
+        <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+        <%= f.submit "更新", class:"btn btn-success btn-sm" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<% @order_details.each do |order_detail| %>
+  <%= form_wiht model: [:admin, order_detail] do |f| %>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= order_detail.item.item_name %></td>
+          <td><%= order_detail.item.add_tax_price %></td>
+          <td><%= order_detail.quantity %></td>
+          <td><%= order_detail.item.subtotal %></td>
+          <td>
+            <%= f.select :product_status,  %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+

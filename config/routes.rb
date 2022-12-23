@@ -27,9 +27,9 @@ Rails.application.routes.draw do
       end
     end
     resources :orders, except: [:edit,:update,:destroy] do
-      member do
-        get :complete
+      collection do
         post :confirm
+        get :complete
       end
     end
     resources :shipping_addresses, except: [:new,:show]
