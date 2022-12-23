@@ -13,5 +13,22 @@
       </div>
     </div>
   </div>
-</div>
 
+  <div class="row">
+    <h5><strong>新着商品</strong></h5>
+    <% @items.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+    <div class="m-4">
+      <div class="mb-2">
+        <%= image_tag item.image, size: '200x200' %>
+      </div>
+      <P><strong><%= link_to item.name, item_path(item.id) %></strong></P>
+      <P><strong>￥<%= item.add_tax_price.to_s(:delimited) %></strong></P>
+    </div>
+<% end %>
+<% end %>
+  </div>
+  <div class="d-flex justify-content-end mx-auto">
+      <%= link_to '全ての商品を見る>', items_path %>
+  </div>
+</div>
