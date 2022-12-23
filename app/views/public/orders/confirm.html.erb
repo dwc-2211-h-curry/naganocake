@@ -38,7 +38,8 @@
   </tr>
   <tr>
     <td>請求金額</td>
-    <td><%= @sum + @order.postage.to_i %></td>
+    <% @sum += @order.postage.to_i %>
+    <td><%= @sum %></td>
   </tr>
 </table>
 
