@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(10) #10項目毎にページネート
     @item = Item.new
     #@genres = Genre.all
   end

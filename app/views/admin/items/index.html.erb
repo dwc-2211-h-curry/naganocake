@@ -10,7 +10,7 @@
   </div>
 
   <diV class="m-md-2"><br></diV>
-  
+
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-1 mx-auto text-left">
@@ -58,4 +58,15 @@
     <div class="col-md-1"></div>
   </div>
   <% end %>
+
+  <!--ページネーション追加-->
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2 mx-auto text-left">
+      <%= paginate @items %>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+
 </div>
+
