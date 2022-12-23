@@ -1,15 +1,15 @@
 <h4>注文履歴詳細</h4>
 
-<h6>注文情報</h6>
+<h6><strong>注文情報</strong></h6>
 <table class="table">
   <tr>
     <td>注文日</td>
-    <td><%= l @order.created_at_i18n %></td>
+    <td><%= l @order.created_at %></td>
   </tr>
   <tr>
     <td>配送先</td>
     <td>
-      <%= @order.shipping_postal_code %><br>
+      〒<%= @order.shipping_postal_code %><br>
       <%= @order.shipping_address %><br>
       <%= @order.shipping_name %>
     </td>
@@ -24,10 +24,32 @@
   </tr>
 </table>
 
-<% @order_details.each do |order_detail| %>
-  <% @sum = 0 %>
-  <% @sum += order_detail.item.add_tax_price %>
-  <h6>請求情報</h6>
+
+  <h6><strong>注文内容</strong></h6>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>商品</td>
+        <td>単価（税込）</td>
+        <td>個数</td>
+        <td>小計</td>
+      </tr>
+    </thead>
+    <% @sum = 0 %>
+    <% @order_details.each do |order_detail| %>
+      <% @sum += order_detail.purchase_price * order_detail.quantity %>
+        <tbody>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.purchase_price %></td>
+            <td><%= order_detail.quantity %></td>
+            <td><%= order_detail.purchase_price * order_detail.quantity %></td>
+          </tr>
+        </tbody>
+    <% end %>
+  </table>
+
+  <h6><strong>請求情報</strong></h6>
   <table class="table">
     <tr>
       <td>商品合計</td>
@@ -42,24 +64,3 @@
       <td><%= @order.total %></td>
     </tr>
   </table>
-
-  <h6>注文内容</h6>
-  <table class="table">
-    <thead>
-      <tr>
-        <td>商品</td>
-        <td>単価（税込）</td>
-        <td>個数</td>
-        <td>小計</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= order_detail.item.item_name %></td>
-        <td><%= order_detail.item.add_tax_price %></td>
-        <td><%= order_detail.quantity %></td>
-        <td><%= order_detail.item.subtotal %></td>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
