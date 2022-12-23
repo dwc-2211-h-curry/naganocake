@@ -1,1 +1,8 @@
-<h1>商品一覧</h1>
+<div class="container m-4 mx-auto">
+  <h3 class='pull-left m-2'><strong>商品一覧(全<%= @items.count %>件)</strong></h3>
+  <div class=row>
+    <div class="d-flex flex-row">
+    </div>
+      <%= render 'from', items: @items %>
+    </div>
+</div>
