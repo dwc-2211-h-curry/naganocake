@@ -1,7 +1,8 @@
 class Public::ItemsController < ApplicationController
   def index
     @genres = Genre.all
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(8) #8項目毎にページネート
+    @all_items = Item.all
   end
 
   def show
