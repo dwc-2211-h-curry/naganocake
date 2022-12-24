@@ -23,4 +23,12 @@
       </tr>
     </tbody>
   <% end %>
+
 </table>
+
+<!--ページネーション追加-->
+<div class="col-md-5"></div>
+<div class="col-md-2 mx-auto text-left">
+  <%= paginate @orders %>
+</div>
+<div class="col-md-5"></div>
