@@ -46,7 +46,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.all.page(params[:page]).per(10) #10項目毎にページネート
   end
 
   def show
