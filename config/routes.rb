@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get "about"=>"homes#about"
+    get "search" => "searches#search"
     resources :items, only: [:index,:show]
     resource :customers, only: [] do
       member do
@@ -43,5 +44,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:show,:update]
     resources :order_details, only: [:update]
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
