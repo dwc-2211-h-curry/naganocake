@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :login_confirm, only: [:create, :index]
+
   def index
     @customer = current_customer
     @items = Item.all
