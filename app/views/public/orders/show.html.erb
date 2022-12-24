@@ -1,6 +1,7 @@
-<h4 class="offset-3 mt-4 mb-4">注文履歴詳細</h4>
-
 <div class="container">
+  <div class="col-2 offset-1 mt-4">
+    <h4 class="text-center" style="background:#ddd">注文履歴詳細</h4>
+  </div>
   <div class="row">
     <div class="col-8 order-1">
       <h6><strong>注文情報</strong></h6>
@@ -39,17 +40,19 @@
             <td>小計</td>
           </tr>
         </thead>
+        <% @sum_total = 0 %>
         <% @sum = 0 %>
         <% @order_details.each do |order_detail| %>
-          <% @sum += order_detail.purchase_price * order_detail.quantity %>
-            <tbody>
-              <tr>
-                <td><%= order_detail.item.name %></td>
-                <td><%= order_detail.purchase_price %></td>
-                <td><%= order_detail.quantity %></td>
-                <td><%= order_detail.purchase_price * order_detail.quantity %></td>
-              </tr>
-            </tbody>
+          <% @sum_total += order_detail.purchase_price * order_detail.quantity %>
+          <% @sum = order_detail.purchase_price * order_detail.quantity %>
+          <tbody>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.purchase_price.to_s(:delimited) %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= @sum.to_s(:delimited) %></td>
+            </tr>
+          </tbody>
         <% end %>
       </table>
     </div>
@@ -59,15 +62,15 @@
       <table class="table table-bordered">
         <tr>
           <td class="table-secondary">商品合計</td>
-          <td><%= @sum %></td>
+          <td><%= @sum_total.to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class="table-secondary">配送料</td>
-          <td><%= @order.postage %></td>
+          <td><%= @order.postage.to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class="table-secondary"><strong>ご請求額</strong></td>
-          <td><%= @order.total %></td>
+          <td><%= @order.total.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>

@@ -1,6 +1,8 @@
 <div class="row mx-5 mt-4">
   <div class="col">
-    <h4 class="offset-1 pl-5">注文履歴一覧</h4>
+    <div class="col-2 offset-1 mt-4">
+      <h4 class="text-center" style="background:#ddd">注文履歴一覧</h4>
+    </div>
 
     <table class="table table-bordered mt-4">
       <thead>
@@ -27,7 +29,7 @@
                 <%= item.name %><br>
               <% end %>
             </td>
-            <td class="align-middle"><%= order.total %>円</td>
+            <td class="align-middle"><%= order.total.to_s(:delimited) %>円</td>
             <td class="align-middle"><%= order.order_status_i18n %></td>
             <td class="align-middle text-center"><%= link_to "表示する", order_path(order.id), class:"btn btn-info" %></td>
           </tr>
