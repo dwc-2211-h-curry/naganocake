@@ -1,34 +1,38 @@
-<h4>注文履歴一覧</h4>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>購入日時</th>
-      <th>購入者</th>
-      <th>注文個数</th>
-      <th>注文ステータス</th>
-    </tr>
-  </thead>
-  <% @orders.each do |order| %>
-    <tbody>
-      <tr>
-        <td>
-          <%= link_to admin_order_path(order.id) do %>
-            <%= l order.created_at %>
-          <% end %>
-        </td>
-        <td><%= order.customer.last_name+order.customer.first_name %></td>
-        <td><%= order.order_details.sum(:quantity) %></td>
-        <td><%= order.order_status_i18n %></td>
-      </tr>
-    </tbody>
-  <% end %>
-
-</table>
-
-<!--ページネーション追加-->
-<div class="col-md-5"></div>
-<div class="col-md-2 mx-auto text-left">
-  <%= paginate @orders %>
+<div class="offset-1 mt-4">
+  <h4 class="ml-5 pl-5">注文履歴一覧</h4>
 </div>
-<div class="col-md-5"></div>
+
+<div class="container">
+  <table class="table">
+    <thead class="table-secondary">
+      <tr>
+        <th style="width: 20%">購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
+    </thead>
+    <% @orders.each do |order| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to admin_order_path(order.id), class:"text-dark" do %>
+              <%= l order.created_at, format: :long %>
+            <% end %>
+          </td>
+          <td><%= order.customer.last_name+order.customer.first_name %></td>
+          <td><%= order.order_details.sum(:quantity) %></td>
+          <td><%= order.order_status_i18n %></td>
+        </tr>
+      </tbody>
+    <% end %>
+
+  </table>
+
+  <!--ページネーション追加-->
+  <div class="col-md-5"></div>
+  <div class="col-md-2 mx-auto text-left">
+    <%= paginate @orders %>
+  </div>
+  <div class="col-md-5"></div>
+</div>
