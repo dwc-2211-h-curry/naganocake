@@ -1,4 +1,6 @@
 class Admin::ItemsController < ApplicationController
+  before_action :admin_login_confirm
+  
   def index
     @items = Item.all.page(params[:page]).per(10) #10項目毎にページネート
     @item = Item.new

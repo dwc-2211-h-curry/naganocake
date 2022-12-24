@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  before_action :admin_login_confirm
+
   def show
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: params[:id])

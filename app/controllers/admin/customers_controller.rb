@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :admin_login_confirm
+  
   def index
     @all_customers = Customer.all.page(params[:page]).per(10) #10項目毎にページネート
   end

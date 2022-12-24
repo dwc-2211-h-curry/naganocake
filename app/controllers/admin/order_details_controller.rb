@@ -1,4 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :admin_login_confirm
+  
   def update
     @order = Order.find(params[:order_detail][:order_id])
     @order_detail = OrderDetail.find(params[:id])
