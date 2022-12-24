@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :customer_login_confirm
+
   def index
     @customer = current_customer
     @items = Item.all

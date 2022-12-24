@@ -1,4 +1,6 @@
 class Admin::GenresController < ApplicationController
+  before_action :admin_login_confirm
+  
   def index
     @genre_new = Genre.new
     @genres = Genre.all

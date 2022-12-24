@@ -1,4 +1,5 @@
 class Public::ShippingAddressesController < ApplicationController
+  before_action :customer_login_confirm
 
   def index
     @shipping_address = ShippingAddress.new

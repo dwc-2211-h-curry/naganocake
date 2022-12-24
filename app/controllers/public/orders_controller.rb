@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :cart_item_nill, only: [:new, :create]
+  before_action :customer_login_confirm
 
   def new
     @order = Order.new

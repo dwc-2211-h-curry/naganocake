@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :customer_login_confirm
+
   def show
     @customer = current_customer
   end
