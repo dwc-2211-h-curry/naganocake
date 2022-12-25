@@ -6,30 +6,39 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <% if customer_signed_in? %>
+        <h6 class="text-light ml-auto">ようこそ、<%= current_customer.last_name %>さん！</h6>
+      <% end %>
         <ul class="navbar-nav ml-auto">
-          <li>
-            <%= link_to my_page_customers_path(current_customer),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> マイページ
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to items_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> 商品一覧
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to cart_items_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> カート
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-row">
+            <li>
+              <%= link_to my_page_customers_path(current_customer),class: 'nav-link text-light' do %>
+                <i class="fas fa-home"></i> マイページ
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to items_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-users"></i> 商品一覧
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to cart_items_path ,class: 'nav-link text-light' do %>
+                <i class="fas fa-book-open"></i> カート
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+            </div>
+            <div>
+              <li><%= render 'public/searches/search', class:'nav-link text-light' %></li>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
-    <div class="search_box"><%= render 'public/searches/search' %></div>
 </header>

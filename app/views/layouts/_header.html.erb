@@ -7,29 +7,36 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          <li>
-            <%= link_to about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> About
-            <% end %>
-          </li>
-          <li>
-            <%= link_to items_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> 商品一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> 新規登録
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-            <% end %>
-          </li>
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-row">
+              <li>
+                <%= link_to about_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-home"></i> About
+                <% end %>
+              </li>
+              <li>
+                <%= link_to items_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-link"></i> 商品一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-user-plus"></i> 新規登録
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
+                  <i class="fas fa-sign-in-alt"></i> ログイン
+                <% end %>
+              </li>
+            </div>
+            <div>
+              <li><%= render 'public/searches/search', class:'nav-link text-light' %></li>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="search_box"><%= render 'public/searches/search' %></div>
+
 </header>
