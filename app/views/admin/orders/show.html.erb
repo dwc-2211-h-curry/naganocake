@@ -9,7 +9,11 @@
         <table class="table table-borderless">
           <tr>
             <th style="width: 10%"><strong>購入者</strong></th>
-            <td><%= @order.customer.last_name + @order.customer.first_name %></td>
+            <td>
+              <%= link_to customer_admin_order_path(@order.id), class:"text-dark" do %>
+                <%= @order.customer.last_name + @order.customer.first_name %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <th><strong>注文日</strong></th>
