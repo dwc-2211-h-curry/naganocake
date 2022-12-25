@@ -1,11 +1,13 @@
 <% items.each do |item| %>
-<%= link_to item_path(item.id) do %>
-<div class="m-4">
-  <div class="mb-2">
-    <%= image_tag item.image, size: '200x200' %>
-  </div>
-  <P><strong><%= link_to item.name, item_path(item.id) %></strong></P>
-  <P><strong>￥<%= item.add_tax_price.to_s(:delimited) %></strong></P>
-</div>
-<% end %>
+  <%= link_to item_path(item.id) do %>
+    <div class="card m-1" style="width: 23%">
+      <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, size: '200x200', class:"card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <P class="card-title"><%= item.name %></P>
+        <P class="card-title">￥<%= item.add_tax_price.to_s(:delimited) %></P>
+      </div>
+    </div>
+  <% end %>
 <% end %>
