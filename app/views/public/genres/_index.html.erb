@@ -8,8 +8,7 @@
   <% genres.each do |genre| %>
     <tbody>
       <tr>
-        <td><%= link_to genre.genre_name, admin_genre_path(genre.id) %></td>
-        <td class="text-center"><%= link_to '編集する', edit_admin_genre_path(genre), class:"btn btn-success" %></td>
+        <td><%= link_to genre.genre_name, genre_path(genre.id) %></td>
       </tr>
     </tbody>
   <% end %>

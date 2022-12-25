@@ -1,0 +1,30 @@
+<div class="container m-4 mx-auto">
+
+  <%= render 'public/genres/index_window', genres: @genres %>
+
+  <h3 class='pull-left m-2'><strong><%= @genre.genre_name %>一覧(全<%= @all_items.count %>件)</strong></h3>
+  <div class=row>
+    <div class="d-flex flex-row">
+    </div>
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <div class="m-4">
+            <div class="mb-2">
+              <%= image_tag item.image, size: '200x200' %>
+            </div>
+            <P><strong><%= link_to item.name, item_path(item.id) %></strong></P>
+            <P><strong>￥<%= item.add_tax_price.to_s(:delimited) %></strong></P>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+
+  <!--ページネーション追加-->
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2 mx-auto text-left">
+      <%= paginate @items %>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+</div>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "about"=>"homes#about"
     get "search" => "searches#search"
     resources :items, only: [:index,:show]
+    resources :genres, only: [:show]
     resource :customers, only: [] do
       member do
         get :my_page, action: :show
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "search" => "searches#search"
     resources :items, except: [:destroy]
-    resources :genres, except: [:new,:show,:destroy]
+    resources :genres, except: [:new,:destroy]
     resources :customers, except: [:new,:create,:destroy]
     resources :orders, only: [:show,:update] do
       member do
