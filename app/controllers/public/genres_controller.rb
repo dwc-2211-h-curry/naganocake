@@ -3,12 +3,13 @@ class Public::GenresController < ApplicationController
 
   def index
     @genre_new = Genre.new
-    @genres = Genre.all
+    @genres = Genre.all.page(params[:page]).per(10) #10項目毎にページネート
   end
 
   def show
     @genre = Genre.find(params[:id])
-    @items = Item.where("genre_id LIKE?", "#{@genre.id}").page(params[:page]).per(10) #10項目毎にページネート
+    @items = Item.where("genre_id LIKE?", "#{@genre.id}").page(params[:page]).per(8) #8項目毎にページネート
+    @all_items = Item.where("genre_id LIKE?", "#{@genre.id}")
   end
 
   private

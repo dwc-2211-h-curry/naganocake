@@ -1,25 +1,27 @@
-<div class="container mx-5">
-  <div class="row">
-    <div class="col">
-      <h4 class="mt-4 ml-5">ジャンル"<%= @genre.genre_name %>"</h4>
+<div class="container m-4 mx-auto">
+  <h3 class='pull-left m-2'><strong>ジャンル"<%= @genre.genre_name %>"(全<%= @all_items.count %>件)</strong></h3>
+  <div class=row>
+    <div class="d-flex flex-row">
     </div>
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <div class="m-4">
+            <div class="mb-2">
+              <%= image_tag item.image, size: '200x200' %>
+            </div>
+            <P><strong><%= link_to item.name, item_path(item.id) %></strong></P>
+            <P><strong>￥<%= item.add_tax_price.to_s(:delimited) %></strong></P>
+          </div>
+        <% end %>
+      <% end %>
   </div>
 
-  <div class="col-5 mt-5">
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th class="text-center">商品一覧</th>
-          <th></th>
-        </tr>
-      </thead>
-      <% @items.each do |item| %>
-        <tbody>
-          <tr>
-            <td><%= link_to item.name, item_path(item.id) %></td>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
+  <!--ページネーション追加-->
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2 mx-auto text-left">
+      <%= paginate @items %>
+    </div>
+    <div class="col-md-5"></div>
   </div>
 </div>
