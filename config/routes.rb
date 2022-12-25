@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "about"=>"homes#about"
     get "search" => "searches#search"
     resources :items, only: [:index,:show]
+    resources :genres, only: [:index,:show]
     resource :customers, only: [] do
       member do
         get :my_page, action: :show
