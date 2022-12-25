@@ -60,7 +60,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-     def sign_up_params
-         params.require(:customer).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number,:password, :password_confirmation)
-     end
+    def after_sign_up_path_for(current_customer)
+      my_page_customers_path
+    end
+
+    def sign_up_params
+       params.require(:customer).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number,:password, :password_confirmation)
+    end
 end
