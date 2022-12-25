@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "search" => "searches#search"
     resources :items, except: [:destroy]
-    resources :genres, except: [:new,:show,:destroy]
+    resources :genres, except: [:new,:destroy]
     resources :customers, except: [:new,:create,:destroy]
     resources :orders, only: [:show,:update]
     resources :order_details, only: [:update]

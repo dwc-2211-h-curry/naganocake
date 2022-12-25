@@ -21,6 +21,11 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
   end
 
+  def show
+    @genre = Genre.find(params[:id])
+    @items = Item.where("genre_id LIKE?", "#{@genre.id}").page(params[:page]).per(8) #8項目毎にページネート
+  end
+
   def update
     genre = Genre.find(params[:id])
     if genre.update(genre_params)

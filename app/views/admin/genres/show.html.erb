@@ -1,0 +1,25 @@
+<div class="container mx-5">
+  <div class="row">
+    <div class="col">
+      <h4 class="mt-4 ml-5">ジャンル"<%= @genre.genre_name %>"</h4>
+    </div>
+  </div>
+
+  <div class="col-5 mt-5">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-center">商品一覧</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @items.each do |item| %>
+        <tbody>
+          <tr>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
