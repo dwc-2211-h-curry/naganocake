@@ -1,11 +1,6 @@
 class Public::GenresController < ApplicationController
   # before_action :admin_login_confirm
 
-  def index
-    @genre_new = Genre.new
-    @genres = Genre.all.page(params[:page]).per(10) #10項目毎にページネート
-  end
-
   def show
     @genres = Genre.all
     @genre = Genre.find(params[:id])
