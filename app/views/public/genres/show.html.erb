@@ -4,7 +4,7 @@
   </div>
 
   <div class="col-10 d-flex flex-column">
-      <h3 class='pull-left m-2'><strong>一覧(全<%= @all_items.count %>件)</strong></h3>
+      <h3 class='pull-left m-2'><strong><%= @genre.genre_name %>一覧(全<%= @all_items.count %>件)</strong></h3>
     <div class="d-flex flex-row flex-wrap">
       <%= render 'public/items/from', items: @items %>
     </div>
