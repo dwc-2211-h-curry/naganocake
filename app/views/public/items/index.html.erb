@@ -1,0 +1,18 @@
+<div class="row mx-5 mt-4">
+  <div class="col-2">
+    <%= render 'public/genres/index_window', genres: @genres %>
+  </div>
+
+  <div class="col-10 d-flex flex-column">
+    <h3 class='pull-left m-2'><strong>商品一覧(全<%= @all_items.count %>件)</strong></h3>
+    <div class="d-flex flex-row flex-wrap">
+      <%= render 'from', items: @items %>
+    </div>
+  </div>
+  <!--ページネーション追加-->
+  <div class="row"></div>
+    <div class="col-md-4"></div>
+    <div class="d-flex align-items-end col-md-4 mx-auto"style="height:70px;">
+      <%= paginate @items %>
+    </div>
+</div>

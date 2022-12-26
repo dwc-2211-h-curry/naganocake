@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="m-md-2"><br>
+  <div class="row">
+    <h4 class="col-md-2 mx-auto text-center" style="background-color:#DDD">
+      <strong>商品一覧</strong>
+    </h4>
+    <div class="col-md-5 mx-auto text-right">
+      <%= link_to "+", new_admin_item_path, class: 'btn btn-outline-secondary rounded-circle p-0　box-shadow' %>
+    </div>
+  </div>
+
+  <diV class="m-md-2"><br></diV>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-1 mx-auto text-left">
+      <strong>商品ID</strong>
+    </div>
+    <div class="col-md-2 mx-auto text-left">
+      <strong>商品名</strong>
+    </div>
+    <div class="col-md-1 mx-auto text-left">
+      <strong>税抜価格</strong>
+    </div>
+    <div class="col-md-2 mx-auto text-left">
+      <strong>ジャンル</strong>
+    </div>
+    <div class="col-md-2 mx-auto text-left">
+      <strong>ステータス</strong>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <% @items.each do |item| %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-1 mx-auto text-left"><%= item.id %>
+      <div class="col-md-1"><br></div>
+    </div>
+    <div class="col-md-2 mx-auto text-left"><%= link_to item.name, admin_item_path(item.id) %>
+      <div class="col-md-1"><br></div>
+    </div>
+    <div class="col-md-1 mx-auto text-left"><%= item.price.to_s(:delimited) %>
+      <div class="col-md-1"><br></div>
+    </div>
+    <div class="col-md-2 mx-auto text-left"><%= item.genre.genre_name %>
+      <div class="col-md-1"><br></div>
+    </div>
+    <% if item.is_active == true %>
+      <div class="col-md-2 mx-auto text-left text-success">
+        <strong><%= '販売中' %></strong>
+      </div>
+    <% else %>
+      <div class="col-md-2 mx-auto text-left text-secondary">
+        <strong><%= '販売停止中' %></strong>
+      </div>
+    <% end %>
+    <div class="col-md-1"></div>
+  </div>
+  <% end %>
+
+  <!--ページネーション追加-->
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2 mx-auto text-left">
+      <%= paginate @items %>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+
+</div>
+

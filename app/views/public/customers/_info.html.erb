@@ -1,0 +1,49 @@
+<div class="container">
+  <div class='row'>
+    <div class='col'>
+      <h3 class='pull-left m-3'><strong>マイページ</strong></h3>
+      <div class="col d-flex allgin-items-center p-2">
+        <h4 class="mt-2"><strong>登録情報</strong></h4>
+        <%= link_to '編集する',information_edit_customers_path, class: "btn btn btn-success ml-5 mb-1" %>
+      </div>
+      <table class="table table-bordered border-bordered">
+        <colgroup>
+          <col class="col-md-2">
+          <col class="col-md-4">
+        </colgroup>
+        <tr>
+      	  <th class="table-secondary">氏名</th>
+      	  <td><%= customer.last_name %>  <%= customer.first_name %></td>
+        </tr>
+        <tr>
+      	  <th class="table-secondary">カナ</th>
+      	  <td><%= customer.last_name_kana %>  <%= customer.first_name_kana %></td>
+        </tr>
+        <tr>
+      	  <th class="table-secondary">郵便番号</th>
+      	  <td><%= customer.postcode %></td>
+        </tr>
+        <tr>
+      	  <th class="table-secondary">住所</th>
+      	  <td><%= customer.address %></td>
+        </tr>
+        <tr>
+      	  <th class="table-secondary">電話番号</th>
+      	  <td><%= customer.phone_number %></td>
+        </tr>
+        <tr>
+      	  <th class="table-secondary">メールアドレス</th>
+      	  <td><%= customer.email %></td>
+        </tr>
+      </table>
+      <div class="col d-flex aligin-items-center">
+        <h4 class="mt-1">配送先</h4>
+        <%= link_to "一覧を見る", shipping_addresses_path, class:"btn btn-info ml-5 mb-3 " %>
+      </div>
+      <div class="col d-flex aligin-items-center">
+        <h4>注文履歴</h4>
+        <%= link_to "一覧を見る", orders_path, class:"btn btn-info ml-4 mb-3" %>
+      </div>
+    </div>
+  </div>
+</div>

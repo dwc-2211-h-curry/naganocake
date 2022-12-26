@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <div class="text-center m-5">
+        <div class="mv-text">
+          <h4><strong>本当に退会しますか?</strong></h4><br>
+            <p>
+              退会すると、会員登録情報や<br>
+              これまでの購入履歴が閲覧できなくなります。<br>
+              退会する場合は、「退会する」 をクリックをしてください。<br><br>
+            </p>
+            <%= link_to "退会しない", my_page_customers_path, class: "btn btn-primary col-4" %>
+            <%= link_to "退会する",  withdraw_customers_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger col-4 ml-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+<div class='container'>
+  <h4 class="pull-left m-4"><strong>配送先編集</strong></h4>
+  <div>
+  	<%= form_with model: @shipping_address,local:true do |f| %>
+      <div class="row mb-3">
+        <div class="col-3"><%= f.label :postcode, "郵便番号(ハイフンなし)" %></div>
+        <div class="col-3"><%= f.text_field :postcode, class: 'form-control' %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3"><%= f.label :address, "住所" %></div>
+        <div class="col-6"><%= f.text_field :address, class: 'form-control' %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3"><%= f.label :name, "宛名" %></div>
+        <div class="col-3"><%= f.text_field :name, class: 'form-control' %></div>
+        <div class="col-5 d-md-flex justify-content-md-end">
+          <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

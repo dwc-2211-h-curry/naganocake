@@ -1,0 +1,87 @@
+<div class="container px-5 px-sm-0 ">
+  <div class="row">
+   <div class="bg-light px-4 mx-4 ">
+    <h3 class='pull-left m-3'>新規会員登録</h3>
+   </div>
+  <div>
+    <%= flash[:notice] %>
+  </div>
+ </div>
+  <div class="row">
+   <div class="col-9 mx-auto mt-3">
+
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+     <table>
+
+     <tr>
+       <th><%= f.label :名前 %></th>
+       <td><%= f.text_field :last_name,autoforcus: true, autocomplete: "name", placeholder: "(姓)" , class: "form-control mt-3 mx-5" %></td>
+       <td><%= f.text_field :first_name,autoforcus: true, autocomplete: "name",  placeholder: "(名)", class: "form-control mt-3 mx-5" %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :フリガナ %></th>
+       <td><%= f.text_field :last_name_kana,autoforcus: true, autocomplete: "name",  placeholder: "(セイ)" , class: "form-control mt-3 mx-5" %></td>
+       <td><%= f.text_field :first_name_kana,autoforcus: true, autocomplete: "name",  placeholder: "(メイ)", class: "form-control mt-3 mx-5" %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :メールアドレス %></th>
+       <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-3 mx-5" %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :郵便番号（ハイフンなし） %></th>
+       <td><%= f.text_field :postcode, autofocus: true, autocomplete: "postal-code", class: "form-control mt-3 mx-5" %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :住所 %></th>
+       <td><%= f.text_field :address, autofocus: true, autocomplete: "street-address", class: "form-control mt-3 mx-5" %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :電話番号（ハイフンなし） %></th>
+       <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "tel", class: "form-control mt-3 mx-5" %></td>
+     </tr>
+
+     <tr>
+      <th><%= f.label :パスワード %>
+      <% if @minimum_password_length %>
+       (<%= @minimum_password_length %>文字以上)
+       <% end %>
+      </th>
+      <td>
+       <%= f.password_field :password, autocomplete: "new-password", class: "form-control mt-3 mx-5" %>
+      </td>
+     </tr>
+
+     <tr>
+      <th><%= f.label :パスワード（確認用） %></th>
+      <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mt-3 mx-5" %></td>
+     </tr>
+
+     <tr>
+      <th></th>
+      <td><%= f.submit "新規登録", class:'btn btn-success px-4 mt-3 mx-5' %></td>
+     </tr>
+     </table>
+     <% end %>
+   </div>
+  </div>
+  </div>
+
+  <p class="notice"></p>
+<div class="container px-5 px-sm-0 ">
+  <div class="row">
+    <div class="bg-light px-4 mx-4 ">
+     <h3>既に登録済みの方</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9 mt-3 mx-5 ">
+     <%= link_to "こちら",new_customer_session_path %>からログインしてください。
+    </div>
+  </div>
+</div>

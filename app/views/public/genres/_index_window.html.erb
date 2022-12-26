@@ -1,0 +1,10 @@
+<div class="card" style="height: 400px">
+  <div class="card-header text-center">ジャンル検索</div>
+  <div class="card-body">
+    <% genres.each do |genre| %>
+      <P class="card-text text-start text-dark">
+        <%= link_to genre.genre_name, genre_path(genre.id), class:"card-text text-start text-dark" %>
+      </P>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="m-md-2"><br></div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <h4 class="col-md-11 mx-auto text-left">
+      <strong><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</strong>
+    </h4>
+    <div class="col-md-8"></div>
+  </div>
+
+  <div class="m-md-2"><br></div>
+    <%= form_for(@customer, url: {controller: 'admin/customers', action: 'update'}) do |f| %>
+
+      <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left">会員ID </div>
+        <div class="col-md-4"><%= @customer.id %></div>
+        <div class="col-md-5"></div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left"><%= f.label :name, '氏名' %></div>
+        <div class="col-md-2"><%= f.text_field :last_name, placeholder: "氏", required: true, size: "13" %></div>
+        <div class="col-md-2"><%= f.text_field :first_name, placeholder: "名", required: true, size: "13" %></div>
+        <div class="col-md-5"></div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left"><%= f.label :name, 'フリガナ' %></div>
+        <div class="col-md-2"><%= f.text_field :last_name_kana, placeholder: "名", required: true, size: "13" %></div>
+        <div class="col-md-2"><%= f.text_field :first_name_kana, placeholder: "名", required: true, size: "13" %></div>
+        <div class="col-md-5"></div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left"><%= f.label :postcode, '郵便番号' %></div>
+        <div class="col-md-4"><%= f.text_field :postcode, required: true, size: "13" %></div>
+        <div class="col-md-5"></div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left"><%= f.label :address, '住所' %></div>
+        <div class="col-md-4"><%= f.text_field :address, required: true, size: "28" %></div>
+        <div class="col-md-5"></div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left"><%= f.label :phone_number, '電話番号' %></div>
+        <div class="col-md-4"><%= f.telephone_field :phone_number, required: true, size: "13" %></div>
+        <div class="col-md-5"></div>
+      </div>
+
+       <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left"><%= f.label :email, 'メールアドレス' %></div>
+        <div class="col-md-4"><%= f.email_field :email, required: true, size: "13" %></div>
+        <div class="col-md-5"></div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-left">会員ステータス</div>
+        <div class="col-md-4">
+          <%= f.radio_button :is_deleted, false %>
+          <%= f.label :is_deleted, '有効　' %>
+
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label :is_deleted, '退会　' %>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+          <%= f.submit '変更を保存', class: "btn btn-success" %>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      
+    <% end %>
+
+</div>

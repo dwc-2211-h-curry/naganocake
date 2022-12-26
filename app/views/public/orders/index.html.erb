@@ -1,0 +1,49 @@
+<div class="row mx-5 mt-4">
+  <div class="col">
+    <div class="col-2 offset-1 mt-4">
+      <h4 class="text-center" style="background:#ddd">注文履歴一覧</h4>
+    </div>
+
+    <table class="table table-bordered mt-4">
+      <thead>
+        <tr class="table-secondary">
+          <td style="width: ">注文日</td>
+          <td style="width: 45%">配送先</td>
+          <td style="width: ">注文商品</td>
+          <td style="width: 9%">支払金額</td>
+          <td style="width: ">ステータス</td>
+          <td style="width: ">注文詳細</td>
+        </tr>
+      </thead>
+      <% @orders.each do |order| %>
+        <tbody>
+          <tr>
+            <td class="align-middle"><%= l order.created_at %></td>
+            <td class="align-middle">
+              〒<%= order.shipping_postal_code %><br>
+              <%= order.shipping_address %><br>
+              <%= order.shipping_name %>
+            </td>
+            <td class="align-middle">
+              <% order.items.each do |item| %>
+                <%= item.name %><br>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= order.total.to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= order.order_status_i18n %></td>
+            <td class="align-middle text-center"><%= link_to "表示する", order_path(order.id), class:"btn btn-info" %></td>
+          </tr>
+        </tbody>
+      <% end %>
+
+    </table>
+
+    <!--ページネーション追加-->
+    <div class="col-md-5"></div>
+    <div class="col-md-2 mx-auto text-left">
+      <%= paginate @orders %>
+    </div>
+    <div class="col-md-5"></div>
+  <div>
+<div>
+

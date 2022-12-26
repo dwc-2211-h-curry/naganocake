@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="m-md-2"><br>
+    <div class="row">
+      <h4 class="col-md-2 mx-auto text-center" style="background-color:#DDD">
+        <strong>会員一覧</strong>
+      </h4>
+      <div class="col-md-5 mx-auto "></div>
+    </div>
+
+  <diV class="m-md-2"><br></diV>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-1 mx-auto text-left">
+      <strong>会員ID</strong>
+    </div>
+    <div class="col-md-2 mx-auto text-left">
+      <strong>氏名</strong>
+    </div>
+    <div class="col-md-1 mx-auto text-left">
+      <strong>メールアドレス</strong>
+    </div>
+    <div class="col-md-2 mx-auto text-left">
+      <strong>ステータス</strong>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <% @all_customers.each do |customer| %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-1 mx-auto text-left"><%= customer.id %>
+      <div class="col-md-1"><br></div>
+    </div>
+    <div class="col-md-2 mx-auto text-left"><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %>
+      <div class="col-md-1"><br></div>
+    </div>
+    <div class="col-md-1 mx-auto text-left"><%= customer.email %>
+      <div class="col-md-1"><br></div>
+    </div>
+    <% if customer.is_deleted == false %>
+      <div class="col-md-2 mx-auto text-left text-success">
+        <strong><%= '有効' %></strong>
+      </div>
+    <% else %>
+      <div class="col-md-2 mx-auto text-left text-secondary">
+        <strong><%= '退会' %></strong>
+      </div>
+    <% end %>
+    <div class="col-md-1"></div>
+  </div>
+  <% end %>
+
+  <!--ページネーション追加-->
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2 mx-auto text-left">
+      <%= paginate @all_customers %>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+
+</div>
