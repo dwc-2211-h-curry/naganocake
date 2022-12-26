@@ -1,71 +1,28 @@
-<div class="container">
+<div class="row mx-5 mt-4">
+  <div class="col-2">
+    <%= render 'public/genres/index_window', genres: @genres %>
+  </div>
 
-  <%= render 'public/genres/index_window', genres: @genres %>
+  <div class="col-9 ml-5">
+    <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
+      <figure class="col-10 figure m-1 d-flex flex-row">
+        <%= image_tag @item.image, size:'350x250', class:"figure-img" %>
+        <div class="offset-1 d-flex flex-column">
+          <h5><strong><%= @item.name %></strong></h5>
 
-  <div class="m-md-2"><br></div>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <h4 class="col-md-2 mx-auto text-center">
-        <strong>商品詳細</strong>
-      </h4>
+          <h5><%= @item.introduction %></h5>
 
-      <div class="col-md-8"></div>
-    </div>
+          <h5 class="mt-5"><strong>￥<%= @item.add_tax_price.to_s(:delimited) %></strong>(税込)</h5>
 
-    <div class="m-md-2"><br></div>
-
-      <div class="row">
-        <div class="col-md-5 mx-auto">
-          <%= image_tag @item.image, size:'400x300' %>
-      </div>
-      <div class="col-md-7 mx-auto">
-        <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
-          <table class="information">
-            <tr>
-              <th>商品名</th>
-              <!-- 下の記号はノーブレイクスペースと読みます -->
-              <td>&nbsp;&nbsp;&nbsp;</td>
-              <td><%= @item.name %></td>
-            </tr>
-
-            <td class="m-md-1"><br></td>
-
-            <tr>
-              <th>商品説明</th>
-              <td>&nbsp;&nbsp;&nbsp;</td>
-              <td><%= @item.introduction %></td>
-            </tr>
-
-            <td class="m-md-1"><br></td>
-
-            <tr>
-              <th>ジャンル</th>
-              <td>&nbsp;&nbsp;&nbsp;</td>
-              <td><%= @item.genre.genre_name %></td>
-            </tr>
-
-            <td class="m-md-1"><br></td>
-
-            <tr>
-              <th>税込価格</br>
-                  (税抜価格)</th>
-              <td>&nbsp;&nbsp;&nbsp;</td>
-              <td><%= @item.add_tax_price.to_s(:delimited) %>
-                  (<%= @item.price.to_s(:delimited) %>)円</td>
-            </tr>
-            <tr>
-              <td>
-                  <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= f.select :quantity, *[1..10], {}, class:"form-control d-inline-block" %>
-              </td>
-              <td>&nbsp;&nbsp;&nbsp;</td>
-              <td class="action center-block mx-auto">
-                <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
-              </td>
-            </tr>
-          </table>
-        <% end %>
-      </div>
-    </div>
+          <div class="d-flex flex-row mt-5">
+            <div>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.select :quantity, *[1..10], {}, class:"form-control d-inline-block" %>
+            </div>
+              <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
+          </div>
+        </div>
+      </figure>
+    <% end %>
   </div>
 </div>
