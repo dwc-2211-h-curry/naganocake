@@ -1,37 +1,40 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
+      <a class="navbar-brand text-dark btn btn-light" href="/"><span>ながのCAKE</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <div class="d-flex flex-column">
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row justify-content-end">
               <li>
-                <%= link_to about_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-home"></i> About
+                <%= link_to about_path,class: 'nav-link text-dark btn btn-light' do %>
+                  About
                 <% end %>
               </li>
+              <li class="p-2"></li>
               <li>
-                <%= link_to items_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-link"></i> 商品一覧
+                <%= link_to items_path,class: 'nav-link text-dark btn btn-light' do %>
+                  商品一覧
                 <% end %>
               </li>
+              <li class="p-2"></li>
               <li>
-                <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-user-plus"></i> 新規登録
+                <%= link_to new_customer_registration_path,class: 'nav-link text-dark btn btn-light' do %>
+                  新規登録
                 <% end %>
               </li>
+              <li class="p-2"></li>
               <li>
-                <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
-                  <i class="fas fa-sign-in-alt"></i> ログイン
+                <%= link_to new_customer_session_path ,class: 'nav-link text-dark btn btn-light' do %>
+                  ログイン
                 <% end %>
               </li>
             </div>
-            <div>
-              <li><%= render 'public/searches/search', class:'nav-link text-light' %></li>
+            <div class="d-flex justify-content-end">
+              <li><%= render 'public/searches/search', class:'nav-link' %></li>
             </div>
           </div>
         </ul>
